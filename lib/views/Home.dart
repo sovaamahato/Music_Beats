@@ -4,6 +4,7 @@ import 'package:music_beats/components/my_box.dart';
 import 'package:music_beats/consts/colors.dart';
 import 'package:music_beats/consts/text_style.dart';
 import 'package:music_beats/controller/player_controller.dart';
+import 'package:music_beats/views/player.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 
 class Home extends StatelessWidget {
@@ -97,13 +98,17 @@ class Home extends StatelessWidget {
                                       trailing:
                                           controller.playIndex.value == index &&
                                                   controller.isplaying.value
-                                              ? Icon(
+                                              ? const Icon(
                                                   Icons.play_arrow,
                                                   color: bgDarkColor,
                                                   size: 26,
                                                 )
                                               : null,
                                       onTap: () {
+                                        Get.to(
+                                            () => Player(
+                                                data: snapshot.data![index]),
+                                            transition: Transition.downToUp);
                                         controller.playSongs(
                                             snapshot.data![index].uri, index);
                                       },
