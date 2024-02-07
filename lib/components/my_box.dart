@@ -7,7 +7,8 @@ class MyBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(8),
+      padding: const EdgeInsets.all(10),
+      margin: EdgeInsets.all(3),
       child: Center(
         child: child,
       ),
