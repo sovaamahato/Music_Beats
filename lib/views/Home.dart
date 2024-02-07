@@ -65,40 +65,49 @@ class Home extends StatelessWidget {
                                 margin: const EdgeInsets.only(bottom: 10),
                                 child: MyBox(
                                   //---------------------------------------listtile
-                                  child: ListTile(
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(12)),
-                                    tileColor: bgColor,
-                                    title: Text(
-                                      snapshot.data![index].displayNameWOExt,
-                                      style: ourStyle(
-                                        family: bold,
-                                        color: bgDarkColor,
-                                        size: 18,
+                                  child: Obx(
+                                    () => ListTile(
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(12)),
+                                      tileColor: bgColor,
+                                      title: Text(
+                                        snapshot.data![index].displayNameWOExt,
+                                        style: ourStyle(
+                                          family: bold,
+                                          color: bgDarkColor,
+                                          size: 18,
+                                        ),
                                       ),
-                                    ),
-                                    subtitle: Text(
-                                      "${snapshot.data![index].artist}",
-                                      style: ourStyle(
-                                        family: regular,
-                                        size: 14,
+                                      subtitle: Text(
+                                        "${snapshot.data![index].artist}",
+                                        style: ourStyle(
+                                          family: regular,
+                                          size: 14,
+                                        ),
                                       ),
-                                    ),
-                                    leading: QueryArtworkWidget(
-                                      id: snapshot.data![index].id,
-                                      type: ArtworkType.AUDIO,
-                                      nullArtworkWidget: const Icon(
-                                        Icons.music_note,
-                                        size: 17,
+                                      leading: QueryArtworkWidget(
+                                        id: snapshot.data![index].id,
+                                        type: ArtworkType.AUDIO,
+                                        nullArtworkWidget: const Icon(
+                                          Icons.music_note,
+                                          size: 17,
+                                        ),
                                       ),
+                                      trailing:
+                                          controller.playIndex.value == index &&
+                                                  controller.isplaying.value
+                                              ? Icon(
+                                                  Icons.play_arrow,
+                                                  color: bgDarkColor,
+                                                  size: 26,
+                                                )
+                                              : null,
+                                      onTap: () {
+                                        controller.playSongs(
+                                            snapshot.data![index].uri, index);
+                                      },
                                     ),
-                                    trailing: const Icon(
-                                      Icons.play_arrow,
-                                      color: bgDarkColor,
-                                      size: 26,
-                                    ),
-                                    onTap: () {},
                                   ),
                                 ),
                               );
