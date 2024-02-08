@@ -7,8 +7,8 @@ import 'package:music_beats/controller/player_controller.dart';
 import 'package:music_beats/views/player.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 
-class Home extends StatelessWidget {
-  const Home({super.key});
+class DeviceSongsScreen extends StatelessWidget {
+  const DeviceSongsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -106,8 +106,7 @@ class Home extends StatelessWidget {
                                               : null,
                                       onTap: () {
                                         Get.to(
-                                            () => Player(
-                                                data: snapshot.data![index]),
+                                            () => Player(data: snapshot.data!),
                                             transition: Transition.downToUp);
                                         controller.playSongs(
                                             snapshot.data![index].uri, index);

@@ -9,10 +9,27 @@ class PlayerController extends GetxController {
 
   var playIndex = 0.obs;
   var isplaying = false.obs;
-  @override
-  void onInit() {
-    super.onInit();
-    checkPermission();
+
+  var duration = ''.obs;
+  var position = ''.obs;
+
+  var max = 0.0.obs;
+  var value = 0.0.obs;
+  // @override
+  // void onInit() {
+  //   super.onInit();
+  //   checkPermission();
+  // }
+
+  updatePositin() {
+    audioPlayer.durationStream.listen((d) {
+      duration.value = d.toString().split(".")[0];
+      max.value = d!.inSeconds.toDouble();
+    });
+    audioPlayer.positionStream.listen((p) {
+      position.value = p.toString().split(".")[0];
+      value.value = p.inSeconds.toDouble();
+    });
   }
 
 //to get permission from device
@@ -22,6 +39,11 @@ class PlayerController extends GetxController {
     } else {
       checkPermission();
     }
+  }
+
+  changeDurationToSeconds(seconds) {
+    var duration = Duration(seconds: seconds);
+    audioPlayer.seek(duration);
   }
 
   //to play songs
@@ -35,6 +57,7 @@ class PlayerController extends GetxController {
       );
       audioPlayer.play();
       isplaying(true);
+      updatePositin();
     } on Exception catch (e) {
       print(e.toString());
     }
