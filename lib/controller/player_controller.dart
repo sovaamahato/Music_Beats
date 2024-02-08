@@ -15,11 +15,11 @@ class PlayerController extends GetxController {
 
   var max = 0.0.obs;
   var value = 0.0.obs;
-  // @override
-  // void onInit() {
-  //   super.onInit();
-  //   checkPermission();
-  // }
+  @override
+  void onInit() {
+    super.onInit();
+    checkPermission();
+  }
 
   updatePositin() {
     audioPlayer.durationStream.listen((d) {
@@ -34,7 +34,8 @@ class PlayerController extends GetxController {
 
 //to get permission from device
   checkPermission() async {
-    var perm = await Permission.storage.request();
+    //var perm = await Permission.storage.request();
+    var perm = await Permission.audio.request();
     if (perm.isGranted) {
     } else {
       checkPermission();

@@ -13,7 +13,7 @@ class MyBox extends StatelessWidget {
         child: child,
       ),
       decoration: BoxDecoration(
-          color: Colors.grey[300],
+          color: Theme.of(context).colorScheme.background,
           borderRadius: const BorderRadius.all(Radius.circular(10)),
           boxShadow: const [
             //shadow for bottom right
