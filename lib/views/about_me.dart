@@ -92,9 +92,12 @@ class AboutMe extends StatelessWidget {
                         ),
                         IconButton(
                           onPressed: () {
-                            launchUrl(Uri(
-                                path:
-                                    "https://www.instagram.com/kushwaha_sovaa/"));
+                            launch(
+                              // Uri(
+                              //   path:
+                              "https://www.instagram.com/kushwaha_sovaa/",
+                            );
+                            //);
                           },
                           icon: Icon(
                             Icons.phone,
@@ -118,6 +121,23 @@ class AboutMe extends StatelessWidget {
                     height: 15,
                     color: Colors.grey.shade500,
                   ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Container(
+                    alignment: Alignment.center,
+                    padding: const EdgeInsets.all(15),
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Color.fromARGB(255, 202, 219, 221),
+                    ),
+                    child: Text(
+                      "See my other Apps ",
+                      style:
+                          TextStyle(color: Color.fromRGBO(54, 128, 138, 0.903)),
+                    ),
+                  )
                 ],
               ),
             ),

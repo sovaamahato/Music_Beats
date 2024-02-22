@@ -5,6 +5,7 @@ import 'package:music_beats/components/my_drawer.dart';
 import 'package:music_beats/consts/colors.dart';
 import 'package:music_beats/consts/text_style.dart';
 import 'package:music_beats/controller/player_controller.dart';
+import 'package:music_beats/views/about_me.dart';
 import 'package:music_beats/views/player.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 
@@ -20,7 +21,7 @@ class PlayList extends StatelessWidget {
         key: _sKey,
         backgroundColor: Theme.of(context).colorScheme.background,
         appBar: AppBar(
-          backgroundColor: Theme.of(context).colorScheme.primary,
+          backgroundColor: Theme.of(context).colorScheme.secondary,
           centerTitle: true,
           title: Text(
             "Music Beats",
@@ -42,10 +43,16 @@ class PlayList extends StatelessWidget {
             SizedBox(
               height: 50,
               width: 50,
-              child: MyBox(
-                child: Icon(
-                  Icons.person_2,
-                  color: Theme.of(context).colorScheme.inversePrimary,
+              child: InkWell(
+                onTap: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (ctx) => AboutMe()));
+                },
+                child: MyBox(
+                  child: Icon(
+                    Icons.person,
+                    color: Theme.of(context).colorScheme.inversePrimary,
+                  ),
                 ),
               ),
             )

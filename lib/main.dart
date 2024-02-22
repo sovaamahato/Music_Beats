@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       theme: isDarkMode ? darkMode : lightMode,
       debugShowCheckedModeBanner: false,
-      home: const AboutMe(),
+      home: const PlayList(),
     );
   }
 }
