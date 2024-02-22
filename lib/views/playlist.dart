@@ -18,23 +18,35 @@ class PlayList extends StatelessWidget {
     var controller = Get.put(PlayerController());
     return Scaffold(
         key: _sKey,
-        // backgroundColor: Colors.transparent,
+        backgroundColor: Theme.of(context).colorScheme.background,
         appBar: AppBar(
-          backgroundColor: Colors.grey[300],
+          backgroundColor: Theme.of(context).colorScheme.primary,
           centerTitle: true,
-          title: const Text("Music Beats"),
+          title: Text(
+            "Music Beats",
+            style: TextStyle(
+              color: Theme.of(context).colorScheme.inversePrimary,
+            ),
+          ),
           leading: InkWell(
               onTap: () {
                 Get.to(() => MyDrawer());
               },
               //onTap: () => Scaffold.of(context).openDrawer(),
-              child: MyBox(child: Icon(Icons.menu))),
-          actions: const [
+              child: MyBox(
+                  child: Icon(
+                Icons.menu,
+                color: Theme.of(context).colorScheme.inversePrimary,
+              ))),
+          actions: [
             SizedBox(
               height: 50,
               width: 50,
               child: MyBox(
-                child: Icon(Icons.search),
+                child: Icon(
+                  Icons.person_2,
+                  color: Theme.of(context).colorScheme.inversePrimary,
+                ),
               ),
             )
           ],
@@ -44,7 +56,7 @@ class PlayList extends StatelessWidget {
           children: [
             Container(
               height: 7,
-              color: white,
+              color: Theme.of(context).colorScheme.background,
             ),
             FutureBuilder<List<SongModel>>(
                 future: controller.audioQuery.querySongs(
@@ -60,9 +72,14 @@ class PlayList extends StatelessWidget {
                     );
                   } else if (snapshot.data!.isEmpty) {
                     return Center(
-                        child: Text(
-                      "No songs ",
-                      style: ourStyle(),
+                        child: Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        "No songs ",
+                        style: ourStyle(
+                          color: Theme.of(context).colorScheme.inversePrimary,
+                        ),
+                      ),
                     ));
                   } else {
                     return Expanded(
